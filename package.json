@@ -3,9 +3,17 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/server.js",
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "build": "npm install",
+    "prestart": "npm run build"
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "railway": {
+    "buildCommand": "npm run build",
+    "startCommand": "npm start"
   },
   "keywords": [],
   "author": "",
