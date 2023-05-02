@@ -4,9 +4,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
-    "build": "npm install",
-    "prestart": "npm run build"
+    "dev": "nodemon src/server.js"
   },
   "engines": {
     "node": "16.x"
