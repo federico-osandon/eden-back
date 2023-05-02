@@ -1,0 +1,4 @@
+GET http://localhost:8080/api/pdfs HTTP/1.1
+
+### 
+DELETE  http://localhost:8080/api/pdfs/1683035190931-PALABRA-MAYO-2023-UNGE.pdf HTTP/1.1

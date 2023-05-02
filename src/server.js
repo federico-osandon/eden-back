@@ -10,8 +10,8 @@ const PORT = 8080 || process.env.PORT
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-app.use(express.static('public'))
 app.use(logger('dev'))
+app.use(express.static('public'))
 
 
 app.use(routerApp)

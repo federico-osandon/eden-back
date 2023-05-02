@@ -6,6 +6,4 @@ const router = Router()
 router.use('/api/pdfs', uploadRouter)
 
 
-
-
 module.exports = router
