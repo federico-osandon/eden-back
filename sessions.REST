@@ -1,0 +1,23 @@
+@api = http://localhost:8080/api/v1/sessions
+
+POST {{api}}/register
+Content-Type: application/json
+
+{  
+    "email": "f@gmail.com",
+    "password": "12345678",
+    "first_name": "Fede",
+    "last_name": "Osandón"
+}
+
+### 
+POST {{api}}/login
+Content-Type: application/json
+
+{  
+    "email": "f@gmail.com",
+    "password": "12345678"
+}
+
+###
+POST {{api}}/logout
