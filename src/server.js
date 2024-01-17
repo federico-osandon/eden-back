@@ -14,7 +14,7 @@ const { PORT, cookieSecret } = serverConfigObject
 application. */
 app.disable('x-powered-by')
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://65a7a97ae65e9a947c719974--effulgent-froyo-ad7d60.netlify.app/',
     credentials: true
 }))
 app.use(logger('dev'))
