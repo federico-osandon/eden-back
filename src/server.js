@@ -14,7 +14,7 @@ const { PORT, cookieSecret } = serverConfigObject
 application. */
 app.disable('x-powered-by')
 app.use(cors({
-    origin: '*',
+    // origin: '*',
     credentials: true
 }))
 app.use(logger('dev'))
