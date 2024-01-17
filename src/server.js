@@ -13,7 +13,7 @@ const { PORT, cookieSecret } = serverConfigObject
 /* These lines of code are configuring and setting up various middleware functions for the Express
 application. */
 app.disable('x-powered-by')
-app.use(cors('*'))
+app.use(cors())
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
