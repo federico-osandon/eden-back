@@ -31,8 +31,8 @@ export class SessionController {
             const token = await createToken({ id: result.id })
             res.status(200).cookie('token', token, {
                     httpOnly: true,
-                    // secure: true,
-                    // sameSite: 'none'
+                    secure: true,
+                    sameSite: 'none'
             }).json({
                 status: 'success',
                 payload: {
