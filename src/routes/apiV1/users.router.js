@@ -9,7 +9,7 @@ export const usersRouter = Router()
 /* The code is defining the routes for the users API. */
 usersRouter
     // .get('/',                   [authentication, authorization(['PUBLIC'])], getUsers)
-    .get('/',                   [authentication, authorization(['ADMIN'])], getUsers)
+    .get('/',                   getUsers)
     .get('/:uid([a-z0-9]+)',    [authentication, authorization(['ADMIN'])], getUser)
     .post('/',                  [authentication, authorization(['ADMIN']),  validateSchema(registerSchema)], createUser)
     .put('/:uid([a-z0-9]+)',    [authentication, authorization(['ADMIN']),  validateSchema(userSchema)], updateUser)
