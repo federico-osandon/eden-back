@@ -16,7 +16,11 @@ app.disable('x-powered-by')
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(cors())
+app.options('/api/v1/sessions/login', cors())
+app.use(cors({
+    origin: ['https://65a7ce24aba4da0909c25596--bejewelled-donut-64b44d.netlify.app', 'http://localhost:5173'],
+    credentials: true
+}))
 app.use(cookie(cookieSecret))
 // app.use(compression({ brotli: { enabled: true, zlib: {} }}))
 
