@@ -88,6 +88,31 @@ export class SessionController {
             res.status(500).json({ status: 'error', message: error.message })
         }
     }
+
+    async verifyToken(){
+        try {
+            const { token } = req.cookies
+            if(!token) return res.send(false)
+
+            jwt.verify(token, serverConfigObject.jwtSecret, async (error, user) => {
+                if(error) return send.sendStatus(401)
+                
+                const userFound = await usersService.getUser({id: user.id})
+                if(!userFound) return res.send(401)
+                return res.json({
+                    status: 'success',
+                    payload: {
+                        id: userFound._id,
+                        first_name: userFound.first_name,
+                        last_name: userFound.last_name,
+                        email: userFound.email,                   
+                    }})
+            
+            })
+        } catch (error) {
+            res.status(500).json({status:'error', message: [error.message]})
+        }
+    }
     
     /**
      * The above function is an asynchronous function that handles the logout functionality by clearing
