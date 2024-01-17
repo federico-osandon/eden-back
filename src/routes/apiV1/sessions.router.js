@@ -10,7 +10,7 @@ export const sessionsRouter = Router()
 sessionsRouter
     .post('/register', [ validateSchema(registerSchema) ], register)
     .post('/login',    [ validateSchema(loginSchema) ],    login)
-    .get('verify',     verifyToken)
+    .get('/verify',     verifyToken)
     .post('/logout', logout)
 
 

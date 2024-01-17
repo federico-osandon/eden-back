@@ -131,7 +131,7 @@ export class SessionController {
                     expires: new Date(0),
                 }).sendStatus(200)
         } catch (error) {
-            res.status(500).json({ status: 'error', message: error.message })
+            res.status(500).json({ status: 'error', message: [error.message] })
         }
     }
 }
