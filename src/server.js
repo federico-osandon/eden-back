@@ -13,11 +13,7 @@ const { PORT, cookieSecret } = serverConfigObject
 /* These lines of code are configuring and setting up various middleware functions for the Express
 application. */
 app.disable('x-powered-by')
-app.use(cors({
-    origin: ['https://65a7a97ae65e9a947c719974--effulgent-froyo-ad7d60.netlify.app', 'http://localhost:8080'],
-    credentials: true
-}))
-app.options('/api/v1/sessions/login', cors())
+app.use(cors())
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
