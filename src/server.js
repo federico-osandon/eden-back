@@ -8,13 +8,7 @@ import appRouter   from './routes/index.js'
 
 
 const app = express()
-const { PORT, cookieSecret } = serverConfigObject
-const corsConfig = {
-    origin: 'http://localhost:5173',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-    optionsSuccessStatus: 204,
-  }
+const { PORT, cookieSecret, corsConfig } = serverConfigObject
 
 /* These lines of code are configuring and setting up various middleware functions for the Express
 application. */

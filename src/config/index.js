@@ -10,7 +10,13 @@ export const serverConfigObject= {
     HOST: process.env.HOST || 'localhost',
     MONGO_URL: process.env.MONGO_URL || 'mongodb://localhost:27017/technicoders',
     cookieSecret: process.env.COOKIE_SECRET || 'secret',
-    jwtSecret: process.env.JWT_SECRET || 'secret'
+    jwtSecret: process.env.JWT_SECRET || 'secret',
+    corsConfig: {
+        origin: 'https://65a8f9a9ab924f61f8cd2988--warm-fenglisu-c02f22.netlify.app',
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+        credentials: true,
+        optionsSuccessStatus: 204,
+      }
 }
 
 export const connectDB = async () => { 
