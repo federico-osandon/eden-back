@@ -1,5 +1,7 @@
+import jwt from "jsonwebtoken"
 import { usersService } from "../service/index.js"
 import { createHash, createToken, isValidPassword } from "../utils/index.js"
+import { serverConfigObject } from "../config/index.js"
 
 
 export class SessionController {
@@ -43,7 +45,7 @@ export class SessionController {
                 }
             })
         } catch (error) {
-            res.status(500).json({ status: 'error', message: error.message })
+            res.status(500).json({ status: 'error', message: [error.message] })
         }
     }
 
@@ -85,23 +87,25 @@ export class SessionController {
                     }
                 })
         } catch (error) {
-            res.status(500).json({ status: 'error', message: error.message })
+            res.status(500).json({ status: 'error', message: [error.message] })
         }
     }
 
-    async verifyToken(){
+    async verifyToken(req,res){
         try {
             const { token } = req.cookies
+            console.log(token)
             if(!token) return res.send(false)
 
             jwt.verify(token, serverConfigObject.jwtSecret, async (error, user) => {
                 if(error) return send.sendStatus(401)
-                
-                const userFound = await usersService.getUser({id: user.id})
+                console.log(user)
+                const userFound = await usersService.getUser({_id: user.id})
+                console.log(userFound)
                 if(!userFound) return res.send(401)
                 return res.json({
                     status: 'success',
-                    payload: {
+                    result: {
                         id: userFound._id,
                         first_name: userFound.first_name,
                         last_name: userFound.last_name,
@@ -131,7 +135,7 @@ export class SessionController {
                     expires: new Date(0),
                 }).sendStatus(200)
         } catch (error) {
-            res.status(500).json({ status: 'error', message: [error.message] })
+            res.status(500).json({ status: 'error', message: error.message })
         }
     }
 }

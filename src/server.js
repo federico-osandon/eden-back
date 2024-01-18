@@ -9,6 +9,12 @@ import appRouter   from './routes/index.js'
 
 const app = express()
 const { PORT, cookieSecret } = serverConfigObject
+const corsConfig = {
+    origin: 'http://localhost:5173',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    optionsSuccessStatus: 204,
+  }
 
 /* These lines of code are configuring and setting up various middleware functions for the Express
 application. */
@@ -16,14 +22,9 @@ app.disable('x-powered-by')
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.options('/api/v1/sessions/login', cors())
-app.options('/api/v1/sessions/register', cors())
-app.use(cors({
-    origin: ['https://65a7ce24aba4da0909c25596--bejewelled-donut-64b44d.netlify.app', 'http://localhost:5173'],
-    credentials: true
-}))
 app.use(cookie(cookieSecret))
 // app.use(compression({ brotli: { enabled: true, zlib: {} }}))
+app.use(cors(corsConfig))
 
 app.use(appRouter)
 

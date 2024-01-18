@@ -3,7 +3,6 @@ import dotenv from "dotenv"
 import { program } from "./commander.js"
 
 const { mode } = program.opts()
-console.log(mode)
 dotenv.config({ path: mode === 'development' ? './.env.development' : './.env' })
 
 export const serverConfigObject= {
